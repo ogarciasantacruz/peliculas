@@ -53,4 +53,34 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Movie::class);
     }
+
+
+    /**
+    * Roles associated with a user
+    * @var collection
+    */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    /*
+    ***********************************************************************
+    >>>> Functions
+    ***********************************************************************
+    */
+
+    /**
+    * Verify is a user owns a specific role as a string or integer
+    * @var array
+    */
+    public function hasRole($role)
+    {
+        if (is_string($role)) {
+
+            return $this->roles->contains('name', $role);
+        }
+        
+        return !! $role->intersect($this->roles)->count();
+    }
 }

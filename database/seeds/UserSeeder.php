@@ -18,5 +18,8 @@ class UserSeeder extends Seeder
             'email'           => 'ogarciasantacruz@gmail.com',
             'password'        => bcrypt('Al3x39722#'),
         ]);
+
+        // Administrador
+        $admin->roles()->attach(1);
     }
 }

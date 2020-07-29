@@ -67,4 +67,17 @@ Route::group(['middleware'  => 'auth'], function() {
     Route::put('/movies-update/{movie}', 'MovieController@update');    
 
 
+    /*
+    ***********************************************************************
+    >>>> Users
+    ***********************************************************************
+    */
+
+    // List
+    Route::get('/users', 'UserController@index');
+
+    // List json
+    Route::get('/users/list-users', 'UserController@getUsers');
+
+
 });

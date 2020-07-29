@@ -4,9 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Movie, App\Gender;
 use Illuminate\Http\Request;
+use Gate;
 
 class MovieController extends Controller
 {
+    
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!Gate::allows('Acceso-Catalogo-Peliculas')) {
+                abort(403);
+            }
+
+            return $next($request);
+        });
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -43,6 +61,10 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Gate::allows('Registro-Catalogo-Peliculas')) {
+            abort(403);
+        }
+        
         return (new \Catalogues\Movies\Create\Add($request))->newMovie();
     }
 
@@ -74,6 +96,11 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
+        
+        if (!Gate::allows('Edicion-Catalogo-Peliculas')) {
+            abort(403);
+        }
+
         return (new \Catalogues\Movies\Update\Adjust($request, $movie))->updateMovie();
     }
 

@@ -4,9 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Gender;
 use Illuminate\Http\Request;
+use Gate;
 
 class GenderController extends Controller
 {
+    
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!Gate::allows('Acceso-Catalogo-Generos')) {
+                abort(403);
+            }
+
+            return $next($request);
+        });
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +58,10 @@ class GenderController extends Controller
     public function store(Request $request)
     {
         
+        if (!Gate::allows('Registro-Catalogo-Generos')) {
+            abort(403);
+        }
+        
         return (new \Catalogues\Genders\Create\Add($request))->newGender();
     }
 
@@ -71,6 +93,11 @@ class GenderController extends Controller
      */
     public function update(Request $request, Gender $gender)
     {
+        
+        if (!Gate::allows('Edicion-Catalogo-Generos')) {
+            abort(403);
+        }
+        
         return (new \Catalogues\Genders\Update\Adjust($request, $gender))->updateEdition();
     }
 
