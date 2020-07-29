@@ -107,8 +107,10 @@ function loadMovies()
                                     <i class="la la-cog"></i>\
                                 </a>\
                                 <div class="dropdown-menu dropdown-menu-right">';
-                                
-                            result += '<a class="dropdown-item editMovie" data-toggle="modal" data-target="#movieEditModal" data-movieId="'+ row.id  +'"  href="#"><i class="la la-edit"></i> Editar película</a>';
+                            
+                            if ( editInfo) {
+                                result += '<a class="dropdown-item editMovie" data-toggle="modal" data-target="#movieEditModal" data-movieId="'+ row.id  +'"  href="#"><i class="la la-edit"></i> Editar película</a>';
+                            }
 
                             result += '</div></div>';
 

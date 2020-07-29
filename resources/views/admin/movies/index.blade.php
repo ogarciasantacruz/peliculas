@@ -26,6 +26,7 @@
                     </h3>
                 </div>
                     
+                @can('Registro-Catalogo-Peliculas')
                 <div class="kt-portlet__head-toolbar">
                     <div class="kt-portlet__head-wrapper">
                         <a href="" class="btn btn-brand btn-bold btn-upper btn-font-sm" data-toggle="modal" data-target="#movieCreateModal">
@@ -34,6 +35,7 @@
                         </a>
                     </div>
                 </div>
+                @endcan
             </div>
                                 
             <div class="kt-portlet__body">
@@ -100,6 +102,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.js"></script>
 
     <!--begin::Page Scripts(used by this page) -->
+    <script>
+        var editInfo = false;
+
+        @can('Edicion-Catalogo-Peliculas')
+            editInfo = true;
+        @endcan
+    </script>
+    
     <script type="text/javascript" src="/js/admin/movies.js"></script>
     
 @endsection
