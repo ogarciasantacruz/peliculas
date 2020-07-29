@@ -135,7 +135,7 @@
 								</li>
 
 								<li class="kt-menu__item " aria-haspopup="true">
-									<a target="_blank" href="" class="kt-menu__link ">
+									<a href="/genders" class="kt-menu__link ">
 										<i class="kt-menu__link-icon flaticon-list-2"></i>
 										<span class="kt-menu__link-text">Generos</span>
 									</a>
@@ -417,6 +417,8 @@
 			@endforeach
 		@endif
 	</script>
+
+	<script src="/js/scripts.js" type="text/javascript"></script>
 
     @yield('scripts')
 

@@ -14,18 +14,22 @@ class GenderController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.genders.index');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display all genders.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getGenders()
     {
-        //
+        
+        $genders = Gender::all();
+        
+        return response()->json(['genders' => $genders]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -35,31 +39,29 @@ class GenderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        return (new \Catalogues\Genders\Create\Add($request))->newGender();
     }
 
+    
     /**
      * Display the specified resource.
      *
      * @param  \App\Gender  $gender
      * @return \Illuminate\Http\Response
      */
-    public function show(Gender $gender)
+    public function getInfo(Gender $gender)
     {
-        //
+        if ( !isset($gender->id )) {
+
+            return response()->json(['exito' => false]);
+        } else {
+
+            return response()->json(['exito' => true, 'gender' => $gender]);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Gender  $gender
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Gender $gender)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -69,7 +71,7 @@ class GenderController extends Controller
      */
     public function update(Request $request, Gender $gender)
     {
-        //
+        return (new \Catalogues\Genders\Update\Adjust($request, $gender))->updateEdition();
     }
 
     /**

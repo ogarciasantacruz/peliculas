@@ -23,8 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $notifications = collect([]);
         
-        return view('admin.home', compact('notifications'));
+        return view('admin.home');
     }
 }

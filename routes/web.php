@@ -19,4 +19,35 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware'  => 'auth'], function() {
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    /*
+    ***********************************************************************
+    >>>> Genders
+    ***********************************************************************
+    */
+
+    // List
+    Route::get('/genders', 'GenderController@index');
+
+    // Store
+    Route::post('/genders', 'GenderController@store');
+
+    // List json
+    Route::get('/genders/list-genders', 'GenderController@getGenders');
+
+    // Info
+    Route::get('/genders/{gender}', 'GenderController@getInfo');
+
+    // Update
+    Route::patch('/genders-update/{gender}', 'GenderController@update');
+
+    // Inactive
+    Route::patch('/genders-inactive/{gender}', 'GenderController@inactive');
+
+    // Active
+    Route::patch('/genders-active/{gender}', 'GenderController@active');
+
+});
