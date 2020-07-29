@@ -17,7 +17,7 @@ class CreateMoviesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('gender_id');
 
-            $table->string('name');
+            $table->string('title');
             $table->date('release_date');
             $table->text('description');
             $table->enum('status', ['Active', 'Suspended'])->default('Active');

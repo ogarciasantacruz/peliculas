@@ -43,11 +43,28 @@ Route::group(['middleware'  => 'auth'], function() {
 
     // Update
     Route::patch('/genders-update/{gender}', 'GenderController@update');
+    
 
-    // Inactive
-    Route::patch('/genders-inactive/{gender}', 'GenderController@inactive');
+    /*
+    ***********************************************************************
+    >>>> Movies
+    ***********************************************************************
+    */
 
-    // Active
-    Route::patch('/genders-active/{gender}', 'GenderController@active');
+    // List
+    Route::get('/movies', 'MovieController@index');
+
+    // Store
+    Route::post('/movies', 'MovieController@store');
+
+    // List json
+    Route::get('/movies/list-movies', 'MovieController@getMovies');
+
+    // Info
+    Route::get('/movies/{movie}', 'MovieController@getInfo');
+
+    // Update
+    Route::put('/movies-update/{movie}', 'MovieController@update');    
+
 
 });

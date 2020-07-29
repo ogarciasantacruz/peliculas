@@ -11,6 +11,7 @@
 		<meta name="description" content="Admin La Neftlix">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="csrf-token" content="{{ csrf_token() }}" />
 
 		<!--begin::Fonts -->
 		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
@@ -143,14 +144,14 @@
 
 
 								<li class="kt-menu__item " aria-haspopup="true">
-									<a target="_blank" href="" class="kt-menu__link ">
+									<a href="/movies" class="kt-menu__link ">
 										<i class="kt-menu__link-icon flaticon-star"></i>
 										<span class="kt-menu__link-text">Películas</span>
 									</a>
 								</li>
 
 								<li class="kt-menu__item " aria-haspopup="true">
-									<a target="_blank" href="" class="kt-menu__link ">
+									<a href="" class="kt-menu__link ">
 										<i class="kt-menu__link-icon flaticon2-user"></i>
 										<span class="kt-menu__link-text">Usuarios</span>
 									</a>

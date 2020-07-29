@@ -100,6 +100,7 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
+            
             $.ajax({
                     type: 'GET',
                     dataType: 'json',

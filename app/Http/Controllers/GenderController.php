@@ -74,14 +74,4 @@ class GenderController extends Controller
         return (new \Catalogues\Genders\Update\Adjust($request, $gender))->updateEdition();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Gender  $gender
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Gender $gender)
-    {
-        //
-    }
 }

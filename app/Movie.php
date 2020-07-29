@@ -12,7 +12,7 @@ class Movie extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'release_date', 'description', 'status', 'gender_id'
+        'title', 'release_date', 'description', 'status', 'gender_id'
     ];
 
 
