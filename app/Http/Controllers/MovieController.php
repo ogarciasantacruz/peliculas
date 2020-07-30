@@ -10,28 +10,16 @@ class MovieController extends Controller
 {
     
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (!Gate::allows('Acceso-Catalogo-Peliculas')) {
-                abort(403);
-            }
-
-            return $next($request);
-        });
-    }
-    
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        
+        if (!Gate::allows('Acceso-Catalogo-Peliculas')) {
+            abort(403);
+        }
         
         $genders = Gender::where('status', 'Active')->get();
 

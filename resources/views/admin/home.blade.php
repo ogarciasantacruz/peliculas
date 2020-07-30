@@ -39,7 +39,7 @@
             <!--begin::Row-->
             <div class="row">
         
-                @foreach($movies AS $movie)
+                @foreach($movies->sortBy('title') AS $movie)
                 <div class="col-lg-6 col-xl-4 order-lg-1 order-xl-1">
                     <!--begin::Portlet-->
                     <div class="kt-portlet kt-portlet--height-fluid kt-widget-12">

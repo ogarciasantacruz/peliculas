@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'name'            => 'Alejandro',
             'last_name'       => 'García Santacruz',
             'email'           => 'admin@demo.com',
-            'password'        => bcrypt('Al3x39722#'),
+            'password'        => bcrypt('abcd1234'),
         ]);
 
         $admin->roles()->attach(1);
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             'last_name'       => 'Paramo',
             'age'             => 15,
             'phone'           => "442 2121 212",
-            'email'           => 'client@demo.com',
+            'email'           => 'user@demo.com',
             'password'        => bcrypt('abcd1234'),
         ]);
 
