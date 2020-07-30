@@ -6,6 +6,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Contracts\Auth\Access\Gate as GateAccess;
 use App\Permission;
+use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -27,19 +28,22 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        $permissions = $this->getPermissions();
+        if (isset(Auth::user()->id)) {
 
-        if (isset($permissions)) {
+            $permissions = $this->getPermissions();
 
-            foreach($this->getPermissions() as $permission){
- 
-                $gate->define($permission->name, function($user) use ($permission) {
-     
-                   return  $user->hasRole($permission->roles);
-     
-                });
+            if (isset($permissions)) {
+
+                foreach($this->getPermissions() as $permission){
+    
+                    $gate->define($permission->name, function($user) use ($permission) {
+        
+                    return  $user->hasRole($permission->roles);
+        
+                    });
+                }
             }
-        }        
+        }                
     }
 
 
