@@ -16,7 +16,12 @@ class GenderSeeder extends Seeder
             ['name' => 'Drama'],
             ['name' => 'Comedia'],
             ['name' => 'Terror'],
-            ['name' => 'Documental']            
+            ['name' => 'Documental'],
+            ['name' => 'Ciencia ficción'],
+            ['name' => 'Anime'],
+            ['name' => 'Acción'],
+            ['name' => 'Romance'],
+            ['name' => 'Suspenso']
         ]);
 
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Movie;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         
-        return view('admin.home');
+        $movies = Movie::where('status', 'Active')->get();
+        $user = Auth::user();
+        $favorites = $user->moviesUser;
+
+        $favorites = $favorites->pluck('id')->all();
+
+        return view('admin.home', compact('movies', 'favorites'));
     }
 }

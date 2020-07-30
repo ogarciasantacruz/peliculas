@@ -104,4 +104,18 @@ class MovieController extends Controller
         return (new \Catalogues\Movies\Update\Adjust($request, $movie))->updateMovie();
     }
 
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Movie  $movie
+     * @return \Illuminate\Http\Response
+     */
+    public function updateFavorites(Request $request)
+    {        
+
+        return (new \Catalogues\Favorites\Update\Adjust($request))->updateFavorites();
+    }
+
 }
