@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Gate;
 
 class UserController extends Controller
-{
+{    
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,72 +16,58 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        if (!Gate::allows('Acceso-Registro-Usuarios')) {
+            abort(403);
+        }                    
+        
+        return view('admin.users.index');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display all genders.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getUsers()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        
+        $users = User::all();
+        
+        return response()->json(['users' => $users ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Gender  $gender
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getInfo($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        
+        if ( !isset($user->id )) {
+
+            return response()->json(['message' => 'Not Found!', 'exito' => false], 404);
+        } else {
+
+            return response()->json(['exito' => true, 'user' => $user->load(['moviesUser', 'moviesUser.gender'])]);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
-     * Update the specified resource in storage.
+     * Display a listing of the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function getMovies(User $user)
     {
-        //
-    }
+        
+        if (!Gate::allows('Acceso-Registro-Usuarios')) {
+            abort(403);
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('admin.users.movies', compact('user'));
     }
 }

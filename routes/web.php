@@ -76,8 +76,7 @@ Route::group(['middleware'  => 'auth'], function() {
     // List
     Route::get('/users', 'UserController@index');
 
-    // List json
-    Route::get('/users/list-users', 'UserController@getUsers');
-
+    // Movies user
+    Route::get('/users/{user}/movies', 'UserController@getMovies');
 
 });

@@ -21,6 +21,8 @@ class PermissionSeeder extends Seeder
             ['group' => 'Peliculas',        'name' => 'Registro-Catalogo-Peliculas',     'description'=> 'Permiso para registrar una nueva película'],
             ['group' => 'Peliculas',        'name' => 'Edicion-Catalogo-Peliculas',      'description'=> 'Permiso para editar una película'],
 
+            ['group' => 'Usuarios',         'name' => 'Acceso-Registro-Usuarios',        'description'=> 'Permiso para acceder al registro de usuarios'],
+
             ['group' => 'Favoritos',        'name' => 'Edicion-Catalogo-Favoritos',      'description'=> 'Permiso para ingresar y editar las películas favoritas'],
         ]);
 

@@ -26,7 +26,7 @@ class Add
             'title'             => 'required|unique:movies,title|max:255',
             'gender'            => 'required|exists:genders,id',
             'release_date'      => 'required|date_format:d/m/Y',
-            'description'       => 'required'
+            'description'       => 'nullable|max:500'
         ]);
 
         return $validator;

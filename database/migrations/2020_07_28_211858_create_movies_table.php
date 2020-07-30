@@ -19,7 +19,7 @@ class CreateMoviesTable extends Migration
 
             $table->string('title');
             $table->date('release_date');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->enum('status', ['Active', 'Suspended'])->default('Active');
             $table->timestamps();
 

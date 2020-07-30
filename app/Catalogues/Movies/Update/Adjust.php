@@ -28,7 +28,7 @@ class Adjust
             'title'             => 'required|max:255|unique:movies,title,' . $this->movie->id,
             'gender'            => 'required|exists:genders,id',
             'release_date'      => 'required|date_format:d/m/Y',
-            'description'       => 'required',
+            'description'       => 'nullable|max:500',
             'status'    => [
                 'required',
                 Rule::in(['Active', 'Suspended']),

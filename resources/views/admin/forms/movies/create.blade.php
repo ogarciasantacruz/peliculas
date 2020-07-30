@@ -45,7 +45,7 @@
                     <div class="form-group row kt-margin-t-20">
                         <label class="col-form-label col-lg-3 col-sm-12">Descripción</label>
                         <div class="col-lg-9 col-md-9 col-sm-12 input-group">
-                            <textarea class="form-control" name="description" id="description" required rows="10"></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="10"></textarea>
                         </div>
                     </div>
 

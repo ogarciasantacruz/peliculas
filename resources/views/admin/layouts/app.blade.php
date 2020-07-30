@@ -135,25 +135,37 @@
 									<i class="kt-menu__section-icon flaticon-more-v2"></i>
 								</li>
 
+								@can('Acceso-Catalogo-Generos')
 								<li class="kt-menu__item " aria-haspopup="true">
 									<a href="/genders" class="kt-menu__link ">
 										<i class="kt-menu__link-icon flaticon-list-2"></i>
 										<span class="kt-menu__link-text">Generos</span>
 									</a>
 								</li>
+								@endcan
 
-
+								@can('Acceso-Catalogo-Peliculas')
 								<li class="kt-menu__item " aria-haspopup="true">
 									<a href="/movies" class="kt-menu__link ">
 										<i class="kt-menu__link-icon flaticon-star"></i>
 										<span class="kt-menu__link-text">Películas</span>
 									</a>
 								</li>
+								@endcan
 
+								@can('Acceso-Registro-Usuarios')
 								<li class="kt-menu__item " aria-haspopup="true">
-									<a href="" class="kt-menu__link ">
+									<a href="/users" class="kt-menu__link ">
 										<i class="kt-menu__link-icon flaticon2-user"></i>
 										<span class="kt-menu__link-text">Usuarios</span>
+									</a>
+								</li>
+								@endcan
+
+								<li class="kt-menu__item  kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover">
+									<a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="kt-menu__link kt-menu__toggle">
+										<i class="kt-menu__link-icon flaticon-logout"></i>
+										<span class="kt-menu__link-text">Cerrar sesión</span>
 									</a>
 								</li>
 
