@@ -14,6 +14,7 @@
 - configurar la conexión a BD en .env
 - php artisan migrate
 - php artisan db:seed
+- php artisan key:generate
 
 El sistema cuenta con roles y pérmisos, hay 2 tipos de rol de usuario que son administrador y cliente.
 El rol de administrador puede registrar y editar generos y películas además de poder visualizar a la lista de usuarios registrados y sus películas favoritas.
